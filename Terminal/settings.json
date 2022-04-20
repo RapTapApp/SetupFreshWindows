@@ -1,0 +1,120 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": 
+    [
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
+        },
+        {
+            "command": "paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+d"
+        }
+    ],
+    "copyFormatting": "all",
+    "copyOnSelect": true,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "antialiasingMode": "cleartype",
+            "bellStyle": 
+            [
+                "audible",
+                "window",
+                "taskbar"
+            ],
+            "closeOnExit": "graceful",
+            "colorScheme": "UltraViolent",
+            "cursorShape": "vintage",
+            "font": 
+            {
+                "face": "JetBrainsMono Nerd Font Mono",
+                "size": 10
+            },
+            "hidden": false,
+            "intenseTextStyle": "all",
+            "startingDirectory": "d:/dev/"
+        },
+        "list": 
+        [
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "commandline": "pwsh.exe -NoExit",
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "Pwsh: Core",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "colorScheme": "Campbell Powershell",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows: PowerShell"
+            },
+            {
+                "experimental.retroTerminalEffect": true,
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "Windows: Cmd"
+            },
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+                "hidden": false,
+                "name": "WSL: Ubuntu",
+                "source": "Windows.Terminal.Wsl"
+            }
+        ]
+    },
+    "schemes": 
+    [
+        {
+            "background": "#242728",
+            "black": "#242728",
+            "blue": "#47E0FB",
+            "brightBlack": "#636667",
+            "brightBlue": "#7FECFF",
+            "brightCyan": "#69FCD3",
+            "brightGreen": "#DEFF8C",
+            "brightPurple": "#E681FF",
+            "brightRed": "#FB58B4",
+            "brightWhite": "#F9F9F5",
+            "brightYellow": "#EBE087",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#0EFFBB",
+            "foreground": "#C1C1C1",
+            "green": "#B6FF00",
+            "name": "UltraViolent",
+            "purple": "#D731FF",
+            "red": "#FF0090",
+            "selectionBackground": "#FFFFFF",
+            "white": "#E1E1E1",
+            "yellow": "#FFF727"
+        }
+    ],
+    "tabWidthMode": "titleLength",
+    "trimBlockSelection": true,
+    "windowingBehavior": "useAnyExisting"
+}

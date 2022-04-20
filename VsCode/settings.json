@@ -1,0 +1,314 @@
+{
+  /*
+    ---[ Language override: json ]---
+  */
+  "[json]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  /*
+    ---[ Language override: json (with comments) ]---
+  */
+  "[jsonc]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  /*
+    ---[ Language override: markdown ]---
+  */
+  "[markdown]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    // Disable formatting
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    // Disable trimming whitespace
+    "files.insertFinalNewline": false,
+    "files.trimFinalNewlines": false,
+    "files.trimTrailingWhitespace": false
+  },
+  /*
+    ---[ Language override: yaml @ azure-pipelines ]---
+  */
+  "[azure-pipelines]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnPaste": false
+  },
+  /*
+    ---[ Language override: yaml ]---
+  */
+  "[yaml]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnPaste": false
+  },
+  /*
+    ---[ Language override: xml ]---
+  */
+  "[xml]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 2
+  },
+  /*
+
+
+    ---[ IDE: Associate file extentions with languages ]---
+  */
+  "files.associations": {
+    "**/docker-compose.yml": "docker",
+    "**/*.psm1": "powershell",
+    "**/*.psd1": "powershell",
+    "**/*.ps1": "powershell",
+    "**/*.ps1xml": "xml",
+    "**/*.yml": "azure-pipelines",
+    "**/*.yaml": "azure-pipelines"
+  },
+  /*
+
+
+    ---[ IDE: Debug ]---
+  */
+  "debug.console.wordWrap": false,
+  "debug.inlineValues": true,
+  "debug.internalConsoleOptions": "neverOpen",
+  "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
+  /*
+
+
+    ---[ IDE: Editor ]---
+  */
+  "editor.formatOnSave": true,
+  "editor.parameterHints.cycle": true,
+  "editor.parameterHints.enabled": true,
+  "editor.rulers": [
+    128
+  ],
+  "editor.semanticHighlighting.enabled": true,
+  "editor.smoothScrolling": true,
+  /*
+    ---[ IDE: Editor: Indentation ]---
+  */
+  "editor.autoIndent": "full",
+  "editor.detectIndentation": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  /*
+
+
+    ---[ IDE: Files ]---
+  */
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.defaultLanguage": "",
+  "files.enableTrash": true,
+  "files.encoding": "utf8",
+  /*
+    ---[ IDE: Files: Whitespace ]---
+  */
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  /*
+    ---[ IDE: Files: Exclude (from explorer tree) ]---
+  */
+  "files.exclude": {
+    // IDE
+    ".vs/*": true,
+    "**/*.TempPoint.ps1": true,
+  },
+  /*
+
+
+    ---[ IDE: Search ]---
+  */
+  "search.exclude": {
+    // IDE
+    "./.vscode/**": true,
+    ".vs/*": true,
+    "**/*.TempPoint.ps1": true,
+    // Temporary
+    "**/.temp/*": true,
+    // Build: binaries, intermediates & outputs
+    "**/.bin/*": true,
+    "**/.int/*": true,
+    "**/.out/*": true,
+    // Test: run & coverage
+    "**/*.cov.xml": true,
+    "**/*.run.xml": true
+  },
+  /*
+
+
+    ---[ IDE: Workbench ]---
+  */
+  "workbench.commandPalette.preserveInput": true,
+  "workbench.editor.enablePreview": true,
+  "workbench.sideBar.location": "right",
+  "workbench.tree.renderIndentGuides": "always",
+  /*
+    ---[ IDE: Workbench: Editor associations ]---
+  */
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook",
+    "*.xlsx": "gc-excelviewer-excel-editor",
+    "*.csv": "gc-excelviewer-csv-editor",
+    "*.tsv": "gc-excelviewer-csv-editor"
+  },
+  /*
+
+
+    ---[ IDE: Terminal ]---
+  */
+  "terminal.explorerKind": "external",
+  "terminal.integrated.allowChords": true,
+  "terminal.integrated.allowMnemonics": true,
+  "terminal.integrated.defaultProfile.linux": "pwsh",
+  "terminal.integrated.drawBoldTextInBrightColors": true,
+  "terminal.integrated.enableBell": true,
+  "terminal.integrated.enableFileLinks": true,
+  "terminal.integrated.enablePersistentSessions": true,
+  "terminal.integrated.scrollback": 1000,
+  /*
+
+
+    ---[ Ext: Azure-Pipelines ]---
+  */
+  "azure-pipelines.configure": true,
+  "azure-pipelines.customSchemaFile": "%USERPROFILE%/.vscode/settings.ext/DOpipe-yaml.schema.json",
+  /*
+
+
+    ---[ Ext: Coverage-gutters ]---
+  */
+  "coverage-gutters.coverageFileNames": [
+    "*.cov.xml"
+  ],
+  "coverage-gutters.customizable.context-menu": true,
+  "coverage-gutters.customizable.status-bar-toggler-watchCoverageAndVisibleEditors-enabled": true,
+  "coverage-gutters.showGutterCoverage": false,
+  "coverage-gutters.showLineCoverage": true,
+  "coverage-gutters.showRulerCoverage": true,
+  /*
+    ---[ Ext: Coverage-gutters: Dark theme ]---
+  */
+  "coverage-gutters.highlightdark": "rgba(60,256,25,0.15)",
+  "coverage-gutters.noHighlightDark": "rgba(256,25,60,0.15)",
+  "coverage-gutters.partialHighlightDark": "rgba(250,256,30,0.4)",
+  /*
+    ---[ Ext: Coverage-gutters: Light theme ]---
+  */
+  "coverage-gutters.highlightlight": "rgba(220, 143, 143, 0.75)",
+  "coverage-gutters.noHighlightLight": "rgba(220, 143, 143, 0.75)",
+  "coverage-gutters.partialHighlightLight": "rgba(220, 213, 143, 0.75)",
+  /*
+
+
+    ---[ Ext: Markdown ]---
+  */
+  "markdown.math.enabled": true,
+  /*
+
+
+    ---[ Ext: PowerShell: Run-time ]---
+  */
+  "powershell.powerShellDefaultVersion": "7",
+  "powershell.enableProfileLoading": false,
+  "powershell.startAutomatically": true,
+  /*
+
+
+    ---[ Ext: PowerShell: Gui ]---
+  */
+  "powershell.helpCompletion": "LineComment",
+  "powershell.buttons.showPanelMovementButtons": false,
+  "powershell.buttons.showRunButtons": true,
+  /*
+
+
+    ---[ Ext: PowerShell: Code-folding ]---
+  */
+  "powershell.codeFolding.enable": true,
+  "powershell.codeFolding.showLastLine": false,
+  /*
+    ---[ Ext: PowerShell: Code-formatting ]---
+  */
+  "powershell.codeFormatting.autoCorrectAliases": true,
+  "powershell.codeFormatting.ignoreOneLineBlock": false,
+  "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+  "powershell.codeFormatting.preset": "OTBS",
+  "powershell.codeFormatting.useConstantStrings": true,
+  "powershell.codeFormatting.useCorrectCasing": true,
+  /*
+    ---[ Ext: PowerShell: Code-formatting: Whitespace ]---
+  */
+  "powershell.codeFormatting.addWhitespaceAroundPipe": true,
+  "powershell.codeFormatting.alignPropertyValuePairs": true,
+  "powershell.codeFormatting.newLineAfterCloseBrace": true,
+  "powershell.codeFormatting.newLineAfterOpenBrace": true,
+  "powershell.codeFormatting.openBraceOnSameLine": true,
+  "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+  "powershell.codeFormatting.whitespaceAfterSeparator": true,
+  "powershell.codeFormatting.whitespaceAroundOperator": true,
+  "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
+  "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
+  "powershell.codeFormatting.whitespaceBetweenParameters": true,
+  "powershell.codeFormatting.whitespaceInsideBrace": true,
+  /*
+
+
+    ---[ Ext: PowerShell: Debugging ]---
+  */
+  "powershell.debugging.createTemporaryIntegratedConsole": false,
+  /*
+    ---[ Ext: PowerShell: Integrated-console ]---
+  */
+  "powershell.integratedConsole.focusConsoleOnExecute": true,
+  "powershell.integratedConsole.forceClearScrollbackBuffer": true,
+  "powershell.integratedConsole.showOnStartup": false,
+  "powershell.integratedConsole.suppressStartupBanner": false,
+  "powershell.integratedConsole.useLegacyReadLine": false,
+  /*
+    ---[ Ext: PowerShell: Pester ]---
+  */
+  "powershell.pester.debugOutputVerbosity": "Diagnostic",
+  "powershell.pester.outputVerbosity": "Normal",
+  "powershell.pester.useLegacyCodeLens": false,
+  /*
+    ---[ Ext: PowerShell: Script-analysis ]---
+  */
+  "powershell.scriptAnalysis.enable": true,
+  "powershell.scriptAnalysis.settingsPath": "%USERPROFILE%/.vscode/settings.ext/Pwsh.ScriptAnalysis.settings.psd1",
+  /*
+
+
+    ---[ Ext: Xml (schemas) ]---
+  */
+  "xml.fileAssociations": [
+    {
+      "systemId": "https://raw.githubusercontent.com/PowerShell/PowerShell/master/src/Schemas/Format.xsd",
+      "pattern": "**/*.Format.ps1xml"
+    },
+    {
+      "systemId": "https://raw.githubusercontent.com/PowerShell/PowerShell/master/src/Schemas/Types.xsd",
+      "pattern": "**/*.Types.ps1xml"
+    }
+  ],
+  /*
+
+
+    ---[ Disable telemetry ]---
+  */
+  "redhat.telemetry.enabled": false,
+  "terminal.external.windowsExec": "wt.exe",
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "terminal.integrated.tabs.title": "${task} : ${process} @ ${cwd}"
+}

@@ -12,7 +12,7 @@ Set-PSReadLineOption -PredictionSource 'History'
 Set-PSReadLineOption -PredictionViewStyle 'ListView'
 
 $env:POSH_GIT_ENABLED = $true
-oh-my-posh init pwsh --config "$PSScriptRoot\oh-my-posh.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$PSScriptRoot\nordtron.omp.json" | Invoke-Expression
 
 
 

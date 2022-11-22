@@ -58,7 +58,5 @@ code --install-extension 'oderwat.indent-rainbow'
 code --install-extension 'redhat.vscode-xml'
 code --install-extension 'redhat.vscode-yaml'
 code --install-extension 'ryanluker.vscode-coverage-gutters'
-code --install-extension 'shyykoserhiy.vscode-spotify'
 code --install-extension 'softwaredotcom.swdc-vscode'
 code --install-extension 'tfsec.tfsec'
-

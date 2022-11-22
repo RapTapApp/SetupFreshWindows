@@ -1,7 +1,6 @@
 # Import default PS:Modules
 Import-Module -Name 'PSReadLine'
 Import-Module -Name 'posh-git'
-Import-Module -Name 'oh-my-posh'
 Import-Module -Name 'Terminal-Icons'
 
 
@@ -13,7 +12,7 @@ Set-PSReadLineOption -PredictionSource 'History'
 Set-PSReadLineOption -PredictionViewStyle 'ListView'
 
 $env:POSH_GIT_ENABLED = $true
-Set-PoshPrompt -Theme "$PSScriptRoot\oh-my-posh.omp.json"
+oh-my-posh init pwsh --config "$PSScriptRoot\oh-my-posh.omp.json" | Invoke-Expression
 
 
 

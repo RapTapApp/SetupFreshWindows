@@ -10,7 +10,6 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
 # Install PS:Modules
 Install-Module -Scope 'AllUsers' -Name 'Az'
 Install-Module -Scope 'AllUsers' -Name 'ImportExcel'
-Install-Module -Scope 'AllUsers' -Name 'oh-my-posh'
 Install-Module -Scope 'AllUsers' -Name 'Pester' -Force -SkipPublisherCheck
 Install-Module -Scope 'AllUsers' -Name 'posh-git'
 Install-Module -Scope 'AllUsers' -Name 'PSReadLine' -Force

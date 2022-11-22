@@ -1,5 +1,7 @@
+#Requires -Version 7.3
 #Requires -RunAsAdministrator
 
+param([switch] $NZXT)
 
 
 # Uninstall bloatware-apps
@@ -31,12 +33,15 @@ winget install 'JGraph.Draw'
 winget install 'KirillOsenkov.MSBuildStructuredLogViewer'
 winget install 'Microsoft.AzureCLI'
 Winget install 'Microsoft.Bicep'
-winget install 'Microsoft.PowerShell'
 winget install 'Microsoft.PowerToys'
 winget install 'Microsoft.VisualStudioCode' -i
-winget install 'NZXT.CAM'
+winget install 'Microsoft.WindowsTerminal.Preview'
 winget install 'VideoLAN.VLC'
 winget install 'Windows Performance Analyzer (Preview)'
+
+if ($NZXT.IsPresent) {
+    winget install 'NZXT.CAM'
+}
 
 
 

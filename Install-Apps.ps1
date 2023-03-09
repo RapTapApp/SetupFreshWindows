@@ -2,7 +2,9 @@
 #Requires -RunAsAdministrator
 
 param(
-    [switch] $UninstallTargetBefore
+    [switch] $NZXT,
+    [switch] $VLC,
+    [switch] $Force
 )
 
 $InformationPreference = 'Continue'
@@ -52,7 +54,7 @@ $TargetApps.GetEnumerator() | ForEach-Object {
 
 
 
-    if ($UninstallTargetBefore.IsPresent) {
+    if ($Force.IsPresent) {
 
         # Uninstall target-app
         Write-Verbose ' Uninstalling...' -Verbose

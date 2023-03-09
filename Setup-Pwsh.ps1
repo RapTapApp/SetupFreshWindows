@@ -1,24 +1,57 @@
+#Requires -Version 7.3
 #Requires -RunAsAdministrator
+
+param()
+
+$InformationPreference = 'Continue'
 
 
 
 # Setup PS:Repository
+Write-Information "`nSetup: PS:Repository..."
+
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
 
 
 
+# Setup PS:Modules
+Write-Information "`nSetup: PS:Modules..."
+
+$PSModules = @{
+    'Az'               = @{}
+    'ImportExcel'      = @{}
+    'Pester'           = @{ Force = $true; SkipPublisherCheck = $true }
+    'posh-git'         = @{}
+    'PSReadLine'       = @{ Force = $true }
+    'PSScriptAnalyzer' = @{ Force = $true }
+    'Terminal-Icons'   = @{}
+}
+
+
+
 # Install PS:Modules
-Install-Module -Scope 'AllUsers' -Name 'Az'
-Install-Module -Scope 'AllUsers' -Name 'ImportExcel'
-Install-Module -Scope 'AllUsers' -Name 'Pester' -Force -SkipPublisherCheck
-Install-Module -Scope 'AllUsers' -Name 'posh-git'
-Install-Module -Scope 'AllUsers' -Name 'PSReadLine' -Force
-Install-Module -Scope 'AllUsers' -Name 'PSScriptAnalyzer' -Force
-Install-Module -Scope 'AllUsers' -Name 'Terminal-Icons'
+Write-Information "`nInstalling PS:Modules..."
+
+$PSModules.GetEnumerator() | ForEach-Object {
+
+    # Install PS:Module
+    Write-Information " - $($PSItem.Name)"
+
+    $ModOpt = @{
+        Force              = [bool] $PSItem.Value.Force
+        SkipPublisherCheck = [bool] $PSItem.Value.SkipPublisherCheck
+    }
+
+    Install-Module -Name $PSItem.Name -Scope 'AllUsers' @$ModOpt
+}
+
+Write-Information ''
 
 
 
-# Install PS:Config
+# Setup PS:Profile I/O-dirs
+Write-Information "`nSetup: PS:Profile I/O-dirs..."
+
 $SourceDir = Join-Path -Path $PSScriptRoot -ChildPath 'Pwsh'
 $TargetDir = Join-Path -Path $([System.Environment]::GetFolderPath('MyDocuments')) -ChildPath 'PowerShell'
 
@@ -26,5 +59,20 @@ if (-not $(Test-Path -Path $TargetDir -PathType 'Container')) {
     mkdir $TargetDir | Out-Null
 }
 
-Get-ChildItem -Path $SourceDir -File |
-    Copy-Item -Destination $TargetDir -Container -Force
+
+
+# Copy PS:Profile files
+Write-Information "`nCopying PS:Profile files..."
+
+Get-ChildItem -Path $SourceDir -File | ForEach-Object {
+
+    # Copy PS:Profile file
+    Write-Information " - $($PSItem.Name)"
+
+    $PSItem | Copy-Item -Destination $TargetDir -Container -Force
+}
+
+
+
+# Done!
+Write-Information "`n[DONE]"

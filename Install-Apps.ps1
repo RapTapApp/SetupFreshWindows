@@ -1,57 +1,74 @@
 #Requires -Version 7.3
 #Requires -RunAsAdministrator
 
-param([switch] $NZXT)
+param(
+    [switch] $UninstallTargetBefore
+)
 
-
-# Uninstall bloatware-apps
-winget uninstall 'Clipchamp'
-winget uninstall 'Films & TV'
-winget uninstall 'LogiBolt'
-winget uninstall 'Microsoft News'
-winget uninstall 'Microsoft Solitaire Collection'
-winget uninstall 'Microsoft Sticky Notes'
-winget uninstall 'OneNote for Windows 10'
-winget uninstall 'Paint'
-winget uninstall 'Skype'
-winget uninstall 'Windows Media Player'
+$InformationPreference = 'Continue'
 
 
 
-# Revert stupid context menu @ File Explorer
-reg.exe add 'HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32' /f /ve
+# Setup target-apps
+Write-Information 'Setup: target-apps...'
 
+$TargetApps = [ordered] @{
 
+    '(Microsoft) Azure cli'                  = 'Microsoft.AzureCLI'
+    '(Microsoft) Bicep'                      = 'Microsoft.Bicep'
+    '(Microsoft) Power toys'                 = 'Microsoft.PowerToys'
+    '(Microsoft) VS code'                    = 'Microsoft.VisualStudioCode'
+    '(Microsoft) Windows terminal (Preview)' = 'Microsoft.WindowsTerminal.Preview'
 
-# Install apps
-winget install '7zip.7zip'
-winget install 'Git.Git'
-winget install 'GitHub.cli'
-winget install 'Google.Chrome'
-winget install 'JanDeDobbeleer.OhMyPosh'
-winget install 'JGraph.Draw'
-winget install 'KirillOsenkov.MSBuildStructuredLogViewer'
-winget install 'Microsoft.AzureCLI'
-Winget install 'Microsoft.Bicep'
-winget install 'Microsoft.PowerToys'
-winget install 'Microsoft.VisualStudioCode' -i
-winget install 'Microsoft.WindowsTerminal.Preview'
-winget install 'VideoLAN.VLC'
-winget install 'Windows Performance Analyzer (Preview)'
+    'MS build - Structured log viewer'       = 'KirillOsenkov.MSBuildStructuredLogViewer'
+    'Windows Performance Analyzer (Preview)' = '9N58QRW40DFW'
 
-if ($NZXT.IsPresent) {
-    winget install 'NZXT.CAM'
+    '7-zip'                                  = '7zip.7zip'
+    'Git'                                    = 'Git.Git'
+    'Github cli'                             = 'GitHub.cli'
+    'Google - Chrome'                        = 'Google.Chrome'
+    'JGraph - Draw.io'                       = 'JGraph.Draw'
+    'Oh my posh'                             = 'JanDeDobbeleer.OhMyPosh'
+    'NZXT - CAM'                             = 'NZXT.CAM'
+    'VideoLAN - VLC'                         = 'VideoLAN - VLC'
+}
+
+if (-not $NZXT.IsPresent) {
+    $TargetApps.Remove('NZXT - CAM')
+}
+
+if (-not $VLC.IsPresent) {
+    $TargetApps.Remove('VideoLAN - VLC')
 }
 
 
 
-# Setup git
-git config --system init.defaultbranch 'main'
+# Install target-apps
+Write-Information "`nInstalling target-apps..."
 
-git config --global user.name 'Cees van Berkel'
-git config --global user.email 'cees@raptapapp.com'
+$TargetApps.GetEnumerator() | ForEach-Object {
+
+    Write-Information "`n - $($PSItem.Key)"
 
 
 
-# Install bicep into az.cli
-az bicep install && az bicep upgrade
+    if ($UninstallTargetBefore.IsPresent) {
+
+        # Uninstall target-app
+        Write-Verbose ' Uninstalling...' -Verbose
+
+        winget uninstall --id $PSItem.Value --exact --purge --accept-source-agreements --silent --disable-interactivity | Out-Null
+
+
+
+        # Install target-app
+        Write-Verbose '   Installing...' -Verbose
+    }
+
+    winget install --id $PSItem.Value --exact --ignore-security-hash --dependency-source --accept-source-agreements --accept-package-agreements --silent
+}
+
+
+
+# Done!
+Write-Information "`n[DONE]"

@@ -1,10 +1,24 @@
-# Copy vscode: settings.json
+#Requires -Version 7.3
+
+param()
+
+$InformationPreference = 'Continue'
+
+
+
+# Copy vscode-settings.json
+Write-Information "`nCopying vscode-settings.json..."
+
 $SourceSettingsJson = "$(Join-Path -Path $PSScriptRoot -ChildPath 'VsCode\settings.json')"
 $TargetSettingsJson = "$(Join-Path -Path $env:APPDATA -ChildPath 'Code\User\settings.json')"
 
 Copy-Item -Path $SourceSettingsJson -Destination $TargetSettingsJson -Force
 
-# Copy vscode: extensions dir
+
+
+# Copy vscode-extensions dir
+Write-Information "`nCopying vscode-extensions dir..."
+
 $SourceSettingsExtDir = "$(Join-Path -Path $PSScriptRoot -ChildPath 'VsCode\settings.ext')\*.*"
 $TargetSettingsExtDir = "$(Join-Path -Path $env:USERPROFILE -ChildPath '.vscode\settings.ext')"
 
@@ -12,51 +26,73 @@ Copy-Item -Path $SourceSettingsExtDir -Recurse -Destination $TargetSettingsExtDi
 
 
 
-# Install vscode: extensions
-code --install-extension 'AzurePolicy.azurepolicyextension'
-code --install-extension 'bencoleman.armview'
-code --install-extension 'bierner.markdown-mermaid'
-code --install-extension 'eamodio.gitlens'
-code --install-extension 'formulahendry.dotnet-test-explorer'
-code --install-extension 'GrapeCity.gc-excelviewer'
-code --install-extension 'hashicorp.terraform'
-code --install-extension 'IBM.output-colorizer'
-code --install-extension 'ionutvmi.path-autocomplete'
-code --install-extension 'jock.svg'
-code --install-extension 'ms-azure-devops.azure-pipelines'
-code --install-extension 'ms-azuretools.vscode-azureappservice'
-code --install-extension 'ms-azuretools.vscode-azurefunctions'
-code --install-extension 'ms-azuretools.vscode-azureresourcegroups'
-code --install-extension 'ms-azuretools.vscode-azurestorage'
-code --install-extension 'ms-azuretools.vscode-azureterraform'
-code --install-extension 'ms-azuretools.vscode-azurevirtualmachines'
-code --install-extension 'ms-azuretools.vscode-bicep'
-code --install-extension 'ms-azuretools.vscode-cosmosdb'
-code --install-extension 'ms-azuretools.vscode-docker'
-code --install-extension 'ms-dotnettools.csharp'
-code --install-extension 'ms-dotnettools.vscode-dotnet-runtime'
-code --install-extension 'ms-kubernetes-tools.vscode-kubernetes-tools'
-code --install-extension 'ms-toolsai.jupyter'
-code --install-extension 'ms-toolsai.jupyter-keymap'
-code --install-extension 'ms-toolsai.jupyter-renderers'
-code --install-extension 'ms-vscode-remote.remote-containers'
-code --install-extension 'ms-vscode-remote.remote-ssh'
-code --install-extension 'ms-vscode-remote.remote-ssh-edit'
-code --install-extension 'ms-vscode-remote.remote-wsl'
-code --install-extension 'ms-vscode-remote.vscode-remote-extensionpack'
-code --install-extension 'ms-vscode.azure-account'
-code --install-extension 'ms-vscode.azurecli'
-code --install-extension 'ms-vscode.powershell'
-code --install-extension 'ms-vscode.powershell-preview'
-code --install-extension 'ms-vscode.remote-repositories'
-code --install-extension 'ms-vscode.vscode-node-azure-pack'
-code --install-extension 'ms-vsliveshare.vsliveshare'
-code --install-extension 'ms-vsliveshare.vsliveshare-audio'
-code --install-extension 'ms-vsliveshare.vsliveshare-pack'
-code --install-extension 'msazurermtools.azurerm-vscode-tools'
-code --install-extension 'oderwat.indent-rainbow'
-code --install-extension 'redhat.vscode-xml'
-code --install-extension 'redhat.vscode-yaml'
-code --install-extension 'ryanluker.vscode-coverage-gutters'
-code --install-extension 'softwaredotcom.swdc-vscode'
-code --install-extension 'tfsec.tfsec'
+# Setup vscode-extensions
+Write-Information "`nSetup: vscode-extensions..."
+
+$TargetExts = @(
+    'AzurePolicy.azurepolicyextension'
+    'bencoleman.armview'
+    'bierner.markdown-mermaid'
+    'eamodio.gitlens'
+    'formulahendry.dotnet-test-explorer'
+    'GrapeCity.gc-excelviewer'
+    'hashicorp.terraform'
+    'IBM.output-colorizer'
+    'ionutvmi.path-autocomplete'
+    'jock.svg'
+    'ms-azure-devops.azure-pipelines'
+    'ms-azuretools.vscode-azureappservice'
+    'ms-azuretools.vscode-azurefunctions'
+    'ms-azuretools.vscode-azureresourcegroups'
+    'ms-azuretools.vscode-azurestorage'
+    'ms-azuretools.vscode-azureterraform'
+    'ms-azuretools.vscode-azurevirtualmachines'
+    'ms-azuretools.vscode-bicep'
+    'ms-azuretools.vscode-cosmosdb'
+    'ms-azuretools.vscode-docker'
+    'ms-dotnettools.csharp'
+    'ms-dotnettools.vscode-dotnet-runtime'
+    'ms-kubernetes-tools.vscode-kubernetes-tools'
+    'ms-toolsai.jupyter'
+    'ms-toolsai.jupyter-keymap'
+    'ms-toolsai.jupyter-renderers'
+    'ms-vscode-remote.remote-containers'
+    'ms-vscode-remote.remote-ssh'
+    'ms-vscode-remote.remote-ssh-edit'
+    'ms-vscode-remote.remote-wsl'
+    'ms-vscode-remote.vscode-remote-extensionpack'
+    'ms-vscode.azure-account'
+    'ms-vscode.azurecli'
+    'ms-vscode.powershell'
+    'ms-vscode.powershell-preview'
+    'ms-vscode.remote-repositories'
+    'ms-vscode.vscode-node-azure-pack'
+    'ms-vsliveshare.vsliveshare'
+    'ms-vsliveshare.vsliveshare-audio'
+    'ms-vsliveshare.vsliveshare-pack'
+    'msazurermtools.azurerm-vscode-tools'
+    'oderwat.indent-rainbow'
+    'redhat.vscode-xml'
+    'redhat.vscode-yaml'
+    'ryanluker.vscode-coverage-gutters'
+    'softwaredotcom.swdc-vscode'
+    'tfsec.tfsec'
+)
+
+
+
+# Install vscode-extensions
+Write-Information "`nInstalling vscode-extensions..."
+
+$TargetExts | ForEach-Object {
+
+    # Install vscode-extension
+    Write-Information " - $PSItem"
+
+    code --install-extension $PSItem
+}
+
+
+
+# Done!
+Write-Information "`n[DONE]"

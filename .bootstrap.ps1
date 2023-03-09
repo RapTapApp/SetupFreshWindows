@@ -1,17 +1,32 @@
+#Requires -Version 5.1
 #Requires -RunAsAdministrator
 
-param([switch] $NZXT)
+param()
+
+$InformationPreference = 'Continue'
 
 
 
-winget install 'Microsoft.PowerShell'
+# Boot: Install winget
+Write-Information "`n[BOOT] Installing winget..."
 
-Set-Location $PSScriptRoot
+Add-AppxPackage -RegisterByFamilyName -MainPackage 'Microsoft.DesktopAppInstaller_8wekyb3d8bbwe'
 
-pwsh -NoProfile -File .\Install-Apps.ps1 -NZXT:$NZXT.IsPresent
-pwsh -NoProfile -File .\Install-Dockers.ps1
-pwsh -NoProfile -File .\Install-Fonts.ps1
-pwsh -NoProfile -File .\Install-PowerToys.ps1
-pwsh -NoProfile -File .\Install-Pwsh.ps1
-pwsh -NoProfile -File .\Install-Terminal.ps1
-pwsh -NoProfile -File .\Install-VsCode.ps1
+
+
+# Boot: Setup: winget
+Write-Information "`n[BOOT] Setup: winget..."
+
+cmd /c 'winget settings --enable InstallerHashOverride'
+
+
+
+# Boot: Install pwsh
+Write-Information "`n[BOOT] Installing pwsh..."
+
+cmd /c 'winget install --id Microsoft.PowerShell --exact'
+
+
+
+# Done!
+Write-Information "`n[DONE]"

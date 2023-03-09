@@ -168,6 +168,9 @@
     ---[ IDE: Terminal ]---
   */
   "terminal.explorerKind": "external",
+  "terminal.external.windowsExec": "wt.exe",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "terminal.integrated.tabs.title": "${task} : ${process} @ ${cwd}",
   "terminal.integrated.allowChords": true,
   "terminal.integrated.allowMnemonics": true,
   "terminal.integrated.defaultProfile.linux": "pwsh",
@@ -217,9 +220,15 @@
   /*
 
 
+    ---[ Ext: Git ]---
+  */
+  "git.autofetch": true,
+  /*
+
+
     ---[ Ext: PowerShell: Run-time ]---
   */
-  "powershell.powerShellDefaultVersion": "7",
+  "powershell.powerShellDefaultVersion": "PowerShell (x64)",
   "powershell.enableProfileLoading": false,
   "powershell.startAutomatically": true,
   /*
@@ -241,11 +250,15 @@
     ---[ Ext: PowerShell: Code-formatting ]---
   */
   "powershell.codeFormatting.autoCorrectAliases": true,
+  "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
   "powershell.codeFormatting.ignoreOneLineBlock": false,
-  "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
-  "powershell.codeFormatting.preset": "OTBS",
   "powershell.codeFormatting.useConstantStrings": true,
   "powershell.codeFormatting.useCorrectCasing": true,
+  /*
+  ---[ Ext: PowerShell: Code-formatting: Indentation ]---
+  */
+  "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+  "powershell.codeFormatting.preset": "OTBS",
   /*
     ---[ Ext: PowerShell: Code-formatting: Whitespace ]---
   */
@@ -306,9 +319,5 @@
 
     ---[ Disable telemetry ]---
   */
-  "redhat.telemetry.enabled": false,
-  "terminal.external.windowsExec": "wt.exe",
-  "security.workspace.trust.untrustedFiles": "open",
-  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
-  "terminal.integrated.tabs.title": "${task} : ${process} @ ${cwd}"
+  "redhat.telemetry.enabled": false
 }

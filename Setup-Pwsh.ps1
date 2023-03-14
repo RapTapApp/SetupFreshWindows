@@ -42,7 +42,7 @@ $PSModules.GetEnumerator() | ForEach-Object {
         SkipPublisherCheck = [bool] $PSItem.Value.SkipPublisherCheck
     }
 
-    Install-Module -Name $PSItem.Name -Scope 'AllUsers' @$ModOpt
+    Install-Module -Name $PSItem.Name -Scope 'AllUsers' @ModOpt
 }
 
 Write-Information ''

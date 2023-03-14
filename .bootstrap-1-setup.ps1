@@ -7,13 +7,6 @@ $InformationPreference = 'Continue'
 
 
 
-# Boot: Install winget
-Write-Information "`n[BOOT] Installing winget..."
-
-Add-AppxPackage -RegisterByFamilyName -MainPackage 'Microsoft.DesktopAppInstaller_8wekyb3d8bbwe'
-
-
-
 # Boot: Setup: winget
 Write-Information "`n[BOOT] Setup: winget..."
 

@@ -25,6 +25,7 @@ $BloatWare = [ordered] @{
     '(Microsoft) Paint 3D'                 = 'Microsoft.MSPaint_8wekyb3d8bbwe'
     '(Microsoft) Paint'                    = '9PCFS5B6T72H'
     '(Microsoft) Phone Link'               = 'Microsoft.YourPhone_8wekyb3d8bbwe'
+    '(Microsoft) Solitaire & Casual Games' = 'Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe'
     '(Microsoft) Skype'                    = '9WZDNCRFJ364'
 
     # Microsoft

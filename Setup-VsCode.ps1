@@ -6,8 +6,27 @@ $InformationPreference = 'Continue'
 
 
 
+# Write file-explorer registry-settings
+Write-Information "`nWriting file-explorer registry-settings..."
+
+$RegPath = 'Microsoft.PowerShell.Core\Registry::HKEY_CLASSES_ROOT\Directory\shell\VSCode'
+if ($(Test-Path $RegPath)) {
+    Remove-Item $RegPath -Force -Recurse
+}
+
+mkdir $RegPath -Force | Set-Location
+New-ItemProperty -Path '.' -PropertyType 'ExpandString' -Name '(default)' -Value 'Open w&ith Code' | Out-Null
+New-ItemProperty -Path '.' -PropertyType 'ExpandString' -Name 'Icon' -Value '%LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe' | Out-Null
+
+mkdir "$RegPath\command" -Force | Set-Location
+New-ItemProperty -Path '.' -PropertyType 'ExpandString' -Name '(default)' -Value '"%LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe" "%V"' | Out-Null
+
+
+
 # Copy vscode-settings.json
 Write-Information "`nCopying vscode-settings.json..."
+
+Set-Location $PSScriptRoot
 
 $SourceSettingsJson = "$(Join-Path -Path $PSScriptRoot -ChildPath 'VsCode\settings.json')"
 $TargetSettingsJson = "$(Join-Path -Path $env:APPDATA -ChildPath 'Code\User\settings.json')"

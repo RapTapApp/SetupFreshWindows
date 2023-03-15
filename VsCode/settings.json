@@ -77,7 +77,7 @@
     ---[ IDE: Debug ]---
   */
   "debug.console.wordWrap": false,
-  "debug.inlineValues": true,
+  "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
   "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
   /*
@@ -121,8 +121,7 @@
   */
   "files.exclude": {
     // IDE
-    ".vs/*": true,
-    "**/*.TempPoint.ps1": true,
+    "./.vs/*": true
   },
   /*
 
@@ -131,15 +130,13 @@
   */
   "search.exclude": {
     // IDE
+    "./.vs/*": true,
     "./.vscode/**": true,
-    ".vs/*": true,
-    "**/*.TempPoint.ps1": true,
-    // Temporary
-    "**/.temp/*": true,
-    // Build: binaries, intermediates & outputs
+    // Build: binaries, intermediates, outputs & temp
     "**/.bin/*": true,
     "**/.int/*": true,
     "**/.out/*": true,
+    "**/.temp/*": true,
     // Test: run & coverage
     "**/*.cov.xml": true,
     "**/*.run.xml": true
@@ -153,6 +150,7 @@
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
   "workbench.tree.renderIndentGuides": "always",
+  "workbench.colorTheme": "RapTapApp: Darker Nord (PS & TF)",
   /*
     ---[ IDE: Workbench: Editor associations ]---
   */
@@ -173,10 +171,9 @@
   "terminal.integrated.tabs.title": "${task} : ${process} @ ${cwd}",
   "terminal.integrated.allowChords": true,
   "terminal.integrated.allowMnemonics": true,
-  "terminal.integrated.defaultProfile.linux": "pwsh",
   "terminal.integrated.drawBoldTextInBrightColors": true,
   "terminal.integrated.enableBell": true,
-  "terminal.integrated.enableFileLinks": true,
+  "terminal.integrated.enableFileLinks": "on",
   "terminal.integrated.enablePersistentSessions": true,
   "terminal.integrated.scrollback": 1000,
   /*
@@ -317,7 +314,8 @@
   /*
 
 
-    ---[ Disable telemetry ]---
+    ---[ Minimal telemetry ]---
   */
+  "telemetry.telemetryLevel": "crash",
   "redhat.telemetry.enabled": false
 }

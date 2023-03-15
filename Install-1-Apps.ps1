@@ -16,23 +16,24 @@ Write-Information 'Setup: target-apps...'
 
 $TargetApps = [ordered] @{
 
-    '(Microsoft) Azure cli'                  = 'Microsoft.AzureCLI'
-    '(Microsoft) Bicep'                      = 'Microsoft.Bicep'
-    '(Microsoft) Power toys'                 = 'Microsoft.PowerToys'
-    '(Microsoft) VS code'                    = 'Microsoft.VisualStudioCode'
-    '(Microsoft) Windows terminal (Preview)' = 'Microsoft.WindowsTerminal.Preview'
+    '(Microsoft) Azure cli'                              = 'Microsoft.AzureCLI'
+    '(Microsoft) Bicep'                                  = 'Microsoft.Bicep'
+    '(Microsoft) Power-toys'                             = 'Microsoft.PowerToys'
+    '(Microsoft) VS-code'                                = 'Microsoft.VisualStudioCode'
+    '(Microsoft) Windows Performance Analyzer (Preview)' = '9N58QRW40DFW'
+    '(Microsoft) Windows Terminal (Preview)'             = 'Microsoft.WindowsTerminal.Preview'
 
-    'MS build - Structured log viewer'       = 'KirillOsenkov.MSBuildStructuredLogViewer'
-    'Windows Performance Analyzer (Preview)' = '9N58QRW40DFW'
+    'Sysinternals Suite'                                 = '9P7KNL5RWT25'
+    'MS build - Structured log viewer'                   = 'KirillOsenkov.MSBuildStructuredLogViewer'
 
-    '7-zip'                                  = '7zip.7zip'
-    'Git'                                    = 'Git.Git'
-    'Github cli'                             = 'GitHub.cli'
-    'Google - Chrome'                        = 'Google.Chrome'
-    'JGraph - Draw.io'                       = 'JGraph.Draw'
-    'Oh my posh'                             = 'JanDeDobbeleer.OhMyPosh'
-    'NZXT - CAM'                             = 'NZXT.CAM'
-    'VideoLAN - VLC'                         = 'VideoLAN - VLC'
+    '7-zip'                                              = '7zip.7zip'
+    'Git'                                                = 'Git.Git'
+    'Github cli'                                         = 'GitHub.cli'
+    'Google - Chrome'                                    = 'Google.Chrome'
+    'JGraph - Draw.io'                                   = 'JGraph.Draw'
+    'Oh my posh'                                         = 'JanDeDobbeleer.OhMyPosh'
+    'NZXT - CAM'                                         = 'NZXT.CAM'
+    'VideoLAN - VLC'                                     = 'VideoLAN - VLC'
 }
 
 if (-not $NZXT.IsPresent) {

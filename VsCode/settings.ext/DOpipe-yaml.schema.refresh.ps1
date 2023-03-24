@@ -1,4 +1,10 @@
-# Opens default browser with https-uri to our azure-devops yaml-schema
-Start-Process 'https://dev.azure.com/RapTapLab/_apis/distributedtask/yamlschema'
+$TargetFile = "$(Join-Path $PSScriptRoot -ChildPath 'DOpipe-yaml.schema.json')"
 
-# Copy the displayed json schema and paste it into the file 'DOpipe-yaml.schema.json'
+if ($(Test-Path $TargetFile)) {
+    Remove-Item $TargetFile -Force
+}
+
+# invokes devops rest call: get /_apis/distributedtask/yamlschema
+az devops invoke --detect true --area distributedtask --resource yamlschema |
+out-file $TargetFile
+# --organization https://dev.azure.com/myOrg

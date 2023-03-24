@@ -29,7 +29,8 @@
     // Disable trimming whitespace
     "files.insertFinalNewline": false,
     "files.trimFinalNewlines": false,
-    "files.trimTrailingWhitespace": false
+    "files.trimTrailingWhitespace": false,
+    "editor.trimAutoWhitespace": false
   },
   /*
     ---[ Language override: yaml @ azure-pipelines ]---
@@ -60,7 +61,7 @@
   /*
 
 
-    ---[ IDE: Associate file extentions with languages ]---
+    ---[ IDE: Associate file-extensions with languages ]---
   */
   "files.associations": {
     "**/docker-compose.yml": "docker",
@@ -100,6 +101,14 @@
   "editor.detectIndentation": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 4,
+  "editor.trimAutoWhitespace": true,
+  /*
+
+
+    ---[ IDE: Explorer ]---
+  */
+  "explorer.fileNesting.enabled": true,
+  "explorer.sortOrderLexicographicOptions": "unicode",
   /*
 
 
@@ -288,6 +297,7 @@
   /*
     ---[ Ext: PowerShell: Pester ]---
   */
+  "powershell.pester.codeLens": true,
   "powershell.pester.debugOutputVerbosity": "Diagnostic",
   "powershell.pester.outputVerbosity": "Normal",
   "powershell.pester.useLegacyCodeLens": false,
@@ -318,4 +328,9 @@
   */
   "telemetry.telemetryLevel": "crash",
   "redhat.telemetry.enabled": false
+  /*
+
+
+    ---[ EOC ]---
+  */
 }

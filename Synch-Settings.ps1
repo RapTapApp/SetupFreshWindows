@@ -4,12 +4,12 @@
 param()
 
 $InformationPreference = 'Continue'
+Set-Location $PSScriptRoot
 
 
 
 # Setup target-apps
 Write-Information "`nSync: VS-code..."
 
-
-
-Copy-Item '~\AppData\Roaming\Code\User\settings.json'
+Get-ChildItem "$env:APPDATA\Code\User\settings.json" -File |
+    Copy-Item -Destination '.\VsCode\settings.json' -Force

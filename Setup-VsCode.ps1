@@ -38,8 +38,8 @@ Copy-Item -Path $SourceSettingsJson -Destination $TargetSettingsJson -Force
 # Copy vscode-extensions dir
 Write-Information "`nCopying vscode-extensions dir..."
 
-$SourceSettingsExtDir = "$(Join-Path -Path $PSScriptRoot -ChildPath 'VsCode\settings.ext')\*.*"
-$TargetSettingsExtDir = "$(Join-Path -Path $env:USERPROFILE -ChildPath '.vscode\settings.ext')"
+$SourceSettingsExtDir = "$(Join-Path -Path $PSScriptRoot -ChildPath 'VsCode\settings.ext\*.*')"
+$TargetSettingsExtDir = "$(Join-Path -Path $env:APPDATA -ChildPath 'Code\User\settings.ext')"
 
 Copy-Item -Path $SourceSettingsExtDir -Recurse -Destination $TargetSettingsExtDir -Container -Force
 
@@ -83,18 +83,13 @@ $TargetExts = @(
     'ms-vscode.azure-account'
     'ms-vscode.azurecli'
     'ms-vscode.powershell'
-    'ms-vscode.powershell-preview'
     'ms-vscode.remote-repositories'
     'ms-vscode.vscode-node-azure-pack'
-    'ms-vsliveshare.vsliveshare'
-    'ms-vsliveshare.vsliveshare-audio'
-    'ms-vsliveshare.vsliveshare-pack'
     'msazurermtools.azurerm-vscode-tools'
     'oderwat.indent-rainbow'
     'redhat.vscode-xml'
     'redhat.vscode-yaml'
     'ryanluker.vscode-coverage-gutters'
-    'softwaredotcom.swdc-vscode'
     'tfsec.tfsec'
 )
 

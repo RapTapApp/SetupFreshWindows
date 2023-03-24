@@ -33,8 +33,6 @@ Import-Module @__Pssa_Module -Force
 
 $script:__Settings_SourceFile = "$(Resolve-Path 'script-analysis.psd1')"
 
-$script:__Settings_TargetFile = [Path]::ChangeExtension($__Settings_SourceFile, 'new.psd1')
-
 
 
 $script:__This_RepoDir = $(
@@ -78,11 +76,11 @@ $script:__Settings = Import-PowerShellDataFile -LiteralPath $__Settings_SourceFi
 
 function Export-RuleSettingsFile {
 
-    $TargetScript = "$(Get-ScriptAnalyzerRule | Format-AllRuleConfig)" -replace "`r", ''
-    Set-Content -LiteralPath $__Settings_TargetFile -Value $TargetScript -Encoding utf8NoBOM
+    $__Settings_Script = "$(Get-ScriptAnalyzerRule | Format-AllRuleConfig)" -replace "`r", ''
+    Set-Content -LiteralPath $__Settings_SourceFile -Value $__Settings_Script -Encoding utf8NoBOM
 
-    $TargetScript = Invoke-Formatter -ScriptDefinition $TargetScript -Settings $script:__Settings_SourceFile
-    Set-Content -LiteralPath $__Settings_TargetFile -Value $TargetScript -Encoding utf8NoBOM
+    $__Settings_Script = Invoke-Formatter -ScriptDefinition $__Settings_Script -Settings $script:__Settings
+    Set-Content -LiteralPath $__Settings_SourceFile -Value $__Settings_Script -Encoding utf8NoBOM
 }
 
 

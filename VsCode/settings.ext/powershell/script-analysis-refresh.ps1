@@ -40,7 +40,7 @@ $script:__Settings_TargetFile = [Path]::ChangeExtension($__Settings_SourceFile, 
 $script:__This_RepoDir = $(
     for ($__Dir = $PSScriptRoot; $__Dir; $__Dir = Split-Path $__Dir -Parent) {
         if ($(Test-Path "$__Dir\.git")) {
-            return $__Dir
+            Write-Output $__Dir
         }
     }
 ) ?? "$(Resolve-Path '../../../../')"
@@ -56,6 +56,15 @@ if (-not $(Test-Path $__Pssa_RepoDir -PathType 'Container')) {
         Push-Location $__Root_RepoDir
 
         git clone 'https://github.com/PowerShell/PSScriptAnalyzer.git'
+    } finally {
+        Pop-Location
+    }
+} else {
+    try {
+        Push-Location $__Pssa_RepoDir
+
+        git fetch
+        git pull
     } finally {
         Pop-Location
     }
@@ -172,11 +181,12 @@ function Format-RuleConfig {
                 $RuleName
             )
 
-            $__Path = "RuleDocumentation/$__Rule.md"
+            $__Path = "docs/Rules/$__Rule.md"
 
             if ($(Test-Path "$__Pssa_RepoDir/$__Path" -PathType Leaf)) {
                 return "https://github.com/PowerShell/PSScriptAnalyzer/blob/master/$__Path"
             } else {
+                Write-Error "Did not find rule documentation for rule: $__Rule" -ea Continue
                 return '[unknown]'
             }
         }

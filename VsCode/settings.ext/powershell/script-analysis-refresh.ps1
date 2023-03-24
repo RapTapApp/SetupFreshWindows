@@ -3,28 +3,57 @@ using namespace System.IO
 using namespace System.Management.Automation
 using namespace System.Text
 
-Import-Module 'PSScriptAnalyzer' -MinimumVersion '1.20.0' -Force
-
 
 
 $ErrorActionPreference = [ActionPreference]::Stop
 $ProgressPreference = [ActionPreference]::Ignore
 
-
-
 Set-Location $PSScriptRoot
 
-$script:__SourceFile = "$(Resolve-Path 'Pwsh.ScriptAnalysis.settings.psd1')"
-$script:__TargetFile = [Path]::ChangeExtension($__SourceFile, 'new.psd1')
 
-$script:__Settings = Import-PowerShellDataFile -LiteralPath $__SourceFile
 
-$__Repositories = "$(Resolve-Path '../../../')"
-$__Pssa_Root = Join-Path $__Repositories -ChildPath 'PSScriptAnalyzer'
+$__Pssa_Module = @{
+    Name           = 'PSScriptAnalyzer'
+    MinimumVersion = '1.20.0'
+}
 
-if (-not $(Test-Path $__Pssa_Root -PathType 'Container')) {
+Find-Module @__Pssa_Module |
+    Where-Object Version -GT $__Pssa_Module.MinimumVersion |
+    ForEach-Object {
+        $__Pssa_Module.MinimumVersion = $PSItem.Version
+    }
+
+if (-not $(Get-InstalledModule @__Pssa_Module -ErrorAction Ignore)) {
+    Install-Module @__Pssa_Module -Scope AllUsers | Out-Null
+}
+
+Import-Module @__Pssa_Module -Force
+
+
+
+$script:__Settings_SourceFile = "$(Resolve-Path 'script-analysis.psd1')"
+
+$script:__Settings_TargetFile = [Path]::ChangeExtension($__Settings_SourceFile, 'new.psd1')
+
+
+
+$script:__This_RepoDir = $(
+    for ($__Dir = $PSScriptRoot; $__Dir; $__Dir = Split-Path $__Dir -Parent) {
+        if ($(Test-Path "$__Dir\.git")) {
+            return $__Dir
+        }
+    }
+) ?? "$(Resolve-Path '../../../../')"
+
+$script:__Root_RepoDir = "$(Split-Path $__This_RepoDir -Parent)"
+
+$script:__Pssa_RepoDir = "$(Join-Path $__Root_RepoDir -ChildPath $__Pssa_Module.Name)"
+
+
+
+if (-not $(Test-Path $__Pssa_RepoDir -PathType 'Container')) {
     try {
-        Push-Location $__Repositories
+        Push-Location $__Root_RepoDir
 
         git clone 'https://github.com/PowerShell/PSScriptAnalyzer.git'
     } finally {
@@ -34,13 +63,17 @@ if (-not $(Test-Path $__Pssa_Root -PathType 'Container')) {
 
 
 
+$script:__Settings = Import-PowerShellDataFile -LiteralPath $__Settings_SourceFile
+
+
+
 function Export-RuleSettingsFile {
 
     $TargetScript = "$(Get-ScriptAnalyzerRule | Format-AllRuleConfig)" -replace "`r", ''
-    Set-Content -LiteralPath $__TargetFile -Value $TargetScript -Encoding utf8NoBOM
+    Set-Content -LiteralPath $__Settings_TargetFile -Value $TargetScript -Encoding utf8NoBOM
 
-    $TargetScript = Invoke-Formatter -ScriptDefinition $TargetScript -Settings $script:__SourceFile
-    Set-Content -LiteralPath $__TargetFile -Value $TargetScript -Encoding utf8NoBOM
+    $TargetScript = Invoke-Formatter -ScriptDefinition $TargetScript -Settings $script:__Settings_SourceFile
+    Set-Content -LiteralPath $__Settings_TargetFile -Value $TargetScript -Encoding utf8NoBOM
 }
 
 
@@ -141,7 +174,7 @@ function Format-RuleConfig {
 
             $__Path = "RuleDocumentation/$__Rule.md"
 
-            if ($(Test-Path "$__Pssa_Root/$__Path" -PathType Leaf)) {
+            if ($(Test-Path "$__Pssa_RepoDir/$__Path" -PathType Leaf)) {
                 return "https://github.com/PowerShell/PSScriptAnalyzer/blob/master/$__Path"
             } else {
                 return '[unknown]'

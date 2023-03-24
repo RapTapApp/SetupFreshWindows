@@ -77,9 +77,11 @@ $script:__Settings = Import-PowerShellDataFile -LiteralPath $__Settings_SourceFi
 function Export-RuleSettingsFile {
 
     $__Settings_Script = "$(Get-ScriptAnalyzerRule | Format-AllRuleConfig)" -replace "`r", ''
+
     Set-Content -LiteralPath $__Settings_SourceFile -Value $__Settings_Script -Encoding utf8NoBOM
 
-    $__Settings_Script = Invoke-Formatter -ScriptDefinition $__Settings_Script -Settings $script:__Settings
+    $__Settings_Script = Invoke-Formatter -ScriptDefinition $__Settings_Script -Settings $__Settings_SourceFile
+
     Set-Content -LiteralPath $__Settings_SourceFile -Value $__Settings_Script -Encoding utf8NoBOM
 }
 

@@ -22,7 +22,7 @@
                 Line up assignment statements such that the assignment operator are aligned.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AlignAssignmentStatement.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AlignAssignmentStatement.md
             #>
             Enable         = $true
             CheckHashtable = $true
@@ -39,7 +39,7 @@
                 Close brace should be on a new line by itself.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/PlaceCloseBrace.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/PlaceCloseBrace.md
             #>
             Enable             = $true
             IgnoreOneLineBlock = $true
@@ -58,7 +58,7 @@
                 Place open braces either on the same line as the preceding expression or on a new line.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/PlaceOpenBrace.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/PlaceOpenBrace.md
             #>
             Enable             = $true
             IgnoreOneLineBlock = $true
@@ -77,7 +77,7 @@
                 Each statement block should have a consistent indenation.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseConsistentIndentation.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseConsistentIndentation.md
             #>
             Enable              = $true
             IndentationSize     = 4
@@ -97,7 +97,7 @@
                 operators and after separators (',' and ';')
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseConsistentWhitespace.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseConsistentWhitespace.md
             #>
             Enable                                  = $true
             CheckInnerBrace                         = $true
@@ -122,7 +122,7 @@
                 For better readability and consistency, use the exact casing of the cmdlet/function/parameter.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseCorrectCasing.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseCorrectCasing.md
             #>
             Enable = $true
         }
@@ -144,7 +144,7 @@
                 This automatic variables is built into PowerShell and readonly.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidAssignmentToAutomaticVariable.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidAssignmentToAutomaticVariable.md
             #>
             Enable = $true
         }
@@ -162,7 +162,7 @@
                 the param block.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidDefaultValueForMandatoryParameter.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidDefaultValueForMandatoryParameter.md
             #>
             Enable = $true
         }
@@ -178,7 +178,7 @@
                 Switch parameter should not default to true.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidDefaultValueSwitchParameter.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidDefaultValueSwitchParameter.md
             #>
             Enable = $true
         }
@@ -195,7 +195,7 @@
                 aliases with name conflicts.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidGlobalAliases.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidGlobalAliases.md
             #>
             Enable = $true
         }
@@ -212,7 +212,7 @@
                 cause errors across different systems.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidGlobalFunctions.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidGlobalFunctions.md
             #>
             Enable = $true
         }
@@ -229,7 +229,7 @@
                 across different systems.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidGlobalVars.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidGlobalVars.md
             #>
             Enable = $true
         }
@@ -246,7 +246,7 @@
                 invoked are non-constant.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidInvokingEmptyMembers.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidInvokingEmptyMembers.md
             #>
             Enable = $true
         }
@@ -262,12 +262,28 @@
                 Line lengths should be less than the configured maximum
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidLongLines.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidLongLines.md
             #>
             Enable            = $false
             MaximumLineLength = 120
         }
         #endregion -- PS = PSAvoidLongLines => Warning --
+
+        #region --[ PS ] PSAvoidMultipleTypeAttributes => Warning --
+        PSAvoidMultipleTypeAttributes                  = @{
+            <#
+                Title:
+                Avoid multiple type specifiers on parameters
+
+                Description:
+                Prameter should not have more than one type specifier.
+
+                Docs:
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidMultipleTypeAttributes.md
+            #>
+            Enable = $true
+        }
+        #endregion -- PS = PSAvoidMultipleTypeAttributes => Warning --
 
         #region --[ PS ] PSAvoidNullOrEmptyHelpMessageAttribute => Warning --
         PSAvoidNullOrEmptyHelpMessageAttribute         = @{
@@ -280,7 +296,7 @@
                 error while executing the corresponding function.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidNullOrEmptyHelpMessageAttribute.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidNullOrEmptyHelpMessageAttribute.md
             #>
             Enable = $true
         }
@@ -296,12 +312,28 @@
                 Do not overwrite the definition of a cmdlet that is included with PowerShell
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidOverwritingBuiltInCmdlets.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidOverwritingBuiltInCmdlets.md
             #>
             Enable            = $false
             PowerShellVersion = @('core-6.1.0-linux', 'core-6.1.0-windows')
         }
         #endregion -- PS = PSAvoidOverwritingBuiltInCmdlets => Warning --
+
+        #region --[ PS ] PSAvoidSemicolonsAsLineTerminators => Warning --
+        PSAvoidSemicolonsAsLineTerminators             = @{
+            <#
+                Title:
+                Avoid semicolons as line terminators
+
+                Description:
+                Line should not end with a semicolon
+
+                Docs:
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidSemicolonsAsLineTerminators.md
+            #>
+            Enable = $false
+        }
+        #endregion -- PS = PSAvoidSemicolonsAsLineTerminators => Warning --
 
         #region --[ PS ] PSAvoidShouldContinueWithoutForce => Warning --
         PSAvoidShouldContinueWithoutForce              = @{
@@ -313,7 +345,7 @@
                 Functions that use ShouldContinue should have a boolean force parameter to allow user to bypass it.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidShouldContinueWithoutForce.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidShouldContinueWithoutForce.md
             #>
             Enable = $true
         }
@@ -329,11 +361,27 @@
                 Each line should have no trailing whitespace.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidTrailingWhitespace.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidTrailingWhitespace.md
             #>
             Enable = $true
         }
         #endregion -- PS = PSAvoidTrailingWhitespace => Information --
+
+        #region --[ PS ] PSAvoidUsingBrokenHashAlgorithms => Warning --
+        PSAvoidUsingBrokenHashAlgorithms               = @{
+            <#
+                Title:
+                Avoid Using Broken Hash Algorithms
+
+                Description:
+                Avoid using the broken algorithms MD5 or SHA-1.
+
+                Docs:
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingBrokenHashAlgorithms.md
+            #>
+            Enable = $true
+        }
+        #endregion -- PS = PSAvoidUsingBrokenHashAlgorithms => Warning --
 
         #region --[ PS ] PSAvoidUsingCmdletAliases => Warning --
         PSAvoidUsingCmdletAliases                      = @{
@@ -349,7 +397,7 @@
                 can introduce these problems, readability, understandability and availability.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingCmdletAliases.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingCmdletAliases.md
             #>
             Enable = $true
         }
@@ -366,7 +414,7 @@
                 the system.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingComputerNameHardcoded.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingComputerNameHardcoded.md
             #>
             Enable = $true
         }
@@ -382,7 +430,7 @@
                 Using ConvertTo-SecureString with plain text will expose secure information.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingConvertToSecureStringWithPlainText.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingConvertToSecureStringWithPlainText.md
             #>
             Enable = $true
         }
@@ -399,7 +447,7 @@
                 "RootModule" in manifest files to avoid PowerShell version inconsistency.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingDeprecatedManifestFields.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingDeprecatedManifestFields.md
             #>
             Enable = $true
         }
@@ -415,7 +463,7 @@
                 Use single quotes if the string is constant.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingDoubleQuotesForConstantString.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingDoubleQuotesForConstantString.md
             #>
             Enable = $true
         }
@@ -434,7 +482,7 @@
                 blocks.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingEmptyCatchBlock.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingEmptyCatchBlock.md
             #>
             Enable = $true
         }
@@ -455,7 +503,7 @@
                 options instead.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingInvokeExpression.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingInvokeExpression.md
             #>
             Enable = $true
         }
@@ -471,7 +519,7 @@
                 Password parameters that take in plaintext will expose passwords and compromise the security of your system.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingPlainTextForPassword.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingPlainTextForPassword.md
             #>
             Enable = $true
         }
@@ -490,9 +538,10 @@
                 calling a command.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingPositionalParameters.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingPositionalParameters.md
             #>
-            Enable = $true
+            Enable           = $true
+            CommandAllowList = 'az'
         }
         #endregion -- PS = PSAvoidUsingPositionalParameters => Information --
 
@@ -507,7 +556,7 @@
                 attribute defined after it in PowerShell 4.0 or earlier) or set the Password parameter to type SecureString.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingUsernameAndPasswordParams.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingUsernameAndPasswordParams.md
             #>
             Enable = $true
         }
@@ -523,7 +572,7 @@
                 Deprecated. Starting in Windows PowerShell 3.0, these cmdlets have been superseded by CIM cmdlets.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingWMICmdlet.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingWMICmdlet.md
             #>
             Enable = $true
         }
@@ -541,7 +590,7 @@
                 Write-Host did not write to a stream, so users cannot suppress it, capture its value, or redirect it.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/AvoidUsingWriteHost.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/AvoidUsingWriteHost.md
             #>
             Enable = $true
         }
@@ -558,7 +607,7 @@
                 continuation. Users typically don't intend to end a line with escaped whitespace.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/MisleadingBacktick.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/MisleadingBacktick.md
             #>
             Enable = $true
         }
@@ -574,7 +623,7 @@
                 Some fields of the module manifest (such as ModuleVersion) are required.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/MissingModuleManifestField.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/MissingModuleManifestField.md
             #>
             Enable = $true
         }
@@ -593,7 +642,7 @@
                 should always be on the left side of equality comparisons just in case.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/PossibleIncorrectComparisonWithNull.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/PossibleIncorrectComparisonWithNull.md
             #>
             Enable = $true
         }
@@ -610,7 +659,7 @@
                 statements.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/PossibleIncorrectUsageOfAssignmentOperator.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/PossibleIncorrectUsageOfAssignmentOperator.md
             #>
             Enable = $true
         }
@@ -627,7 +676,7 @@
                 PowerShell.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/PossibleIncorrectUsageOfRedirectionOperator.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/PossibleIncorrectUsageOfRedirectionOperator.md
             #>
             Enable = $true
         }
@@ -644,7 +693,7 @@
                 the comment.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/ProvideCommentHelp.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/ProvideCommentHelp.md
             #>
             Enable                  = $true
             BlockComment            = $true
@@ -665,7 +714,7 @@
                 will generally cause runtime errors.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/ReservedCmdletChar.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/ReservedCmdletChar.md
             #>
             Enable = $true
         }
@@ -682,7 +731,7 @@
                 generally occurs.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/ReservedParams.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/ReservedParams.md
             #>
             Enable = $true
         }
@@ -698,7 +747,7 @@
                 Ensure all parameters are used within the same script, scriptblock, or function where they are declared.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/ReviewUnusedParameter.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/ReviewUnusedParameter.md
             #>
             Enable = $true
         }
@@ -715,7 +764,7 @@
                 versa. Scripts with one or the other but not both will generally run into an error or unexpected behavior.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/ShouldProcess.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/ShouldProcess.md
             #>
             Enable = $true
         }
@@ -731,7 +780,7 @@
                 Checks that all defined cmdlets use approved verbs. This is in line with PowerShell's best practices.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseApprovedVerbs.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseApprovedVerbs.md
             #>
             Enable = $true
         }
@@ -748,7 +797,7 @@
                 consuming this file can interpret it correctly.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseBOMForUnicodeEncodedFile.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseBOMForUnicodeEncodedFile.md
             #>
             Enable = $true
         }
@@ -764,7 +813,7 @@
                 Cmdlet should be called with the mandatory parameters.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseCmdletCorrectly.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseCmdletCorrectly.md
             #>
             Enable = $true
         }
@@ -780,7 +829,7 @@
                 Use cmdlets compatible with the given PowerShell version and edition and operating system
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseCompatibleCmdlets.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseCompatibleCmdlets.md
             #>
             Enable = $true
         }
@@ -796,7 +845,7 @@
                 Use commands compatible with the given PowerShell version and operating system
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseCompatibleCommands.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseCompatibleCommands.md
             #>
             Enable         = $false
             IgnoreCommands = ''
@@ -815,7 +864,7 @@
                 Use script syntax compatible with the given PowerShell versions
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseCompatibleSyntax.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseCompatibleSyntax.md
             #>
             Enable         = $true
             TargetVersions = '7.0'
@@ -832,7 +881,7 @@
                 Use types compatible with the given PowerShell version and operating system
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseCompatibleTypes.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseCompatibleTypes.md
             #>
             Enable         = $false
             IgnoreTypes    = ''
@@ -851,7 +900,7 @@
                 Ensure declared variables are used elsewhere in the script and not just during assignment.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseDeclaredVarsMoreThanAssignments.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseDeclaredVarsMoreThanAssignments.md
             #>
             Enable = $true
         }
@@ -867,7 +916,7 @@
                 Use literal initializer, @{}, for creating a hashtable as they are case-insensitive by default
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseLiteralInitializerForHashtable.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseLiteralInitializerForHashtable.md
             #>
             Enable = $true
         }
@@ -883,7 +932,7 @@
                 The return types of a cmdlet should be declared using the OutputType attribute.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseOutputTypeCorrectly.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseOutputTypeCorrectly.md
             #>
             Enable = $true
         }
@@ -900,7 +949,7 @@
                 input objects from the pipeline to that parameter.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseProcessBlockForPipelineCommand.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseProcessBlockForPipelineCommand.md
             #>
             Enable = $true
         }
@@ -917,7 +966,7 @@
                 transformation attribute defined after the PSCredential type attribute.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UsePSCredentialType.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UsePSCredentialType.md
             #>
             Enable = $true
         }
@@ -934,7 +983,7 @@
                 'ShouldProcess'.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseShouldProcessForStateChangingFunctions.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseShouldProcessForStateChangingFunctions.md
             #>
             Enable = $true
         }
@@ -950,7 +999,7 @@
                 Cmdlet should use singular instead of plural nouns.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseSingularNouns.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseSingularNouns.md
             #>
             Enable = $true
         }
@@ -969,7 +1018,7 @@
                 and Whatif parameters, then it should support ShouldProcess.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseSupportsShouldProcess.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseSupportsShouldProcess.md
             #>
             Enable = $true
         }
@@ -987,7 +1036,7 @@
                 or $null or wildcard, PowerShell does some potentially expensive work to analyze the rest of the module.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseToExportFieldsInManifest.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseToExportFieldsInManifest.md
             #>
             Enable = $true
         }
@@ -1004,7 +1053,7 @@
                 modifier, or be initialized within the ScriptBlock.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseUsingScopeModifierInNewRunspaces.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseUsingScopeModifierInNewRunspaces.md
             #>
             Enable = $true
         }
@@ -1020,7 +1069,7 @@
                 PowerShell help file needs to use UTF8 Encoding.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/UseUTF8EncodingForHelpFile.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/UseUTF8EncodingForHelpFile.md
             #>
             Enable = $true
         }
@@ -1043,7 +1092,7 @@
                 Sample configurations should have resource name they are demonstrating in the title.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/DSCDscExamplesPresent.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/DSCDscExamplesPresent.md
             #>
             Enable = $true
         }
@@ -1060,7 +1109,7 @@
                 resource name they are testing in the file name.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/DSCDscTestsPresent.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/DSCDscTestsPresent.md
             #>
             Enable = $true
         }
@@ -1078,7 +1127,7 @@
                 hashtable. Test function in DSC class and Get-TargetResource function in DSC resource must return a boolean.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/DSCReturnCorrectTypesForDSCFunctions.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/DSCReturnCorrectTypesForDSCFunctions.md
             #>
             Enable = $true
         }
@@ -1088,14 +1137,14 @@
         PSDSCStandardDSCFunctionsInResource            = @{
             <#
                 Title:
-                Use Standard Get/Set/Test TargetResource functions in DSC Resource
+                Use Standard Get/Set/Test TargetResource functions in DSC Resource 
 
                 Description:
                 DSC Resource must implement Get, Set and Test-TargetResource functions. DSC Class must implement Get, Set and
                 Test functions.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/DSCStandardDSCFunctionsInResource.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/DSCStandardDSCFunctionsInResource.md
             #>
             Enable = $true
         }
@@ -1111,7 +1160,7 @@
                 The Get/Test/Set TargetResource functions of DSC resource must have the same mandatory parameters.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/DSCUseIdenticalMandatoryParametersForDSC.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/DSCUseIdenticalMandatoryParametersForDSC.md
             #>
             Enable = $true
         }
@@ -1127,7 +1176,7 @@
                 The Test and Set-TargetResource functions of DSC Resource must have the same parameters.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/DSCUseIdenticalParametersForDSC.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/DSCUseIdenticalParametersForDSC.md
             #>
             Enable = $true
         }
@@ -1144,7 +1193,7 @@
                 issues when a DSC configuration is executed.
 
                 Docs:
-                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/RuleDocumentation/DSCUseVerboseMessageInDSCResource.md
+                https://github.com/PowerShell/PSScriptAnalyzer/blob/master/docs/Rules/DSCUseVerboseMessageInDSCResource.md
             #>
             Enable = $true
         }

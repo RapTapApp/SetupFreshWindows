@@ -1,4 +1,4 @@
-$TargetFile = "$(Join-Path $PSScriptRoot -ChildPath 'DOpipe-yaml.schema.json')"
+$TargetFile = "$(Join-Path $PSScriptRoot -ChildPath 'yamlschema.json')"
 
 if ($(Test-Path $TargetFile)) {
     Remove-Item $TargetFile -Force
@@ -6,5 +6,5 @@ if ($(Test-Path $TargetFile)) {
 
 # invokes devops rest call: get /_apis/distributedtask/yamlschema
 az devops invoke --detect true --area distributedtask --resource yamlschema |
-out-file $TargetFile
+    Out-File $TargetFile
 # --organization https://dev.azure.com/myOrg

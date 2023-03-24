@@ -191,7 +191,7 @@
     ---[ Ext: Azure-Pipelines ]---
   */
   "azure-pipelines.configure": true,
-  "azure-pipelines.customSchemaFile": "%USERPROFILE%/.vscode/settings.ext/DOpipe-yaml.schema.json",
+  "azure-pipelines.customSchemaFile": "{env:APPDATA}/Code/User/settings.ext/azure-pipelines/yaml-schema.json",
   /*
 
 
@@ -305,7 +305,7 @@
     ---[ Ext: PowerShell: Script-analysis ]---
   */
   "powershell.scriptAnalysis.enable": true,
-  "powershell.scriptAnalysis.settingsPath": "%USERPROFILE%/.vscode/settings.ext/Pwsh.ScriptAnalysis.settings.psd1",
+  "powershell.scriptAnalysis.settingsPath": "{env:APPDATA}/Code/User/settings.ext/powershell/script-analysis.psd1",
   /*
 
 

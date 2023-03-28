@@ -39,7 +39,13 @@ Copy-Item -Path $SourceSettingsJson -Destination $TargetSettingsJson -Force
 Write-Information "`nCopying vscode-extensions dir..."
 
 $SourceSettingsExtDir = "$(Join-Path -Path $PSScriptRoot -ChildPath 'VsCode\settings.ext\*.*')"
-$TargetSettingsExtDir = "$(Join-Path -Path $env:APPDATA -ChildPath 'Code\User\settings.ext')"
+$TargetSettingsExtDir = "~\.vscode\settings.ext')"
+
+if ($(Test-Path $TargetSettingsExtDir)) {
+    Remove-Item $TargetSettingsExtDir -Recurse -Force | Out-Null
+}
+
+mkdir $TargetSettingsExtDir | Out-Null
 
 Copy-Item -Path $SourceSettingsExtDir -Recurse -Destination $TargetSettingsExtDir -Container -Force
 
@@ -49,48 +55,33 @@ Copy-Item -Path $SourceSettingsExtDir -Recurse -Destination $TargetSettingsExtDi
 Write-Information "`nSetup: vscode-extensions..."
 
 $TargetExts = @(
-    'AzurePolicy.azurepolicyextension'
-    'bencoleman.armview'
-    'bierner.markdown-mermaid'
-    'eamodio.gitlens'
-    'formulahendry.dotnet-test-explorer'
-    'GrapeCity.gc-excelviewer'
-    'hashicorp.terraform'
-    'IBM.output-colorizer'
-    'ionutvmi.path-autocomplete'
-    'jock.svg'
+    # git
+    'donjayamanne.githistory',
+    'mhutchie.git-graph',
+
+    # data
+    'GrapeCity.gc-excelviewer',
+    'redhat.vscode-xml',
+    'redhat.vscode-yaml',
+
+    # (dev)container
+    'ms-azuretools.vscode-docker',
+    'ms-vscode-remote.vscode-remote-extensionpack',
+    # Installs extensions
+    # - ms-vscode-remote.remote-ssh
+    # - ms-vscode.remote-server
+    # - ms-vscode-remote.remote-containers
+    # - ms-vscode-remote.remote-wsl'
+
+    # azure dev-ops pipeline intellisense
     'ms-azure-devops.azure-pipelines'
-    'ms-azuretools.vscode-azureappservice'
-    'ms-azuretools.vscode-azurefunctions'
-    'ms-azuretools.vscode-azureresourcegroups'
-    'ms-azuretools.vscode-azurestorage'
-    'ms-azuretools.vscode-azureterraform'
-    'ms-azuretools.vscode-azurevirtualmachines'
-    'ms-azuretools.vscode-bicep'
-    'ms-azuretools.vscode-cosmosdb'
-    'ms-azuretools.vscode-docker'
-    'ms-dotnettools.csharp'
-    'ms-dotnettools.vscode-dotnet-runtime'
-    'ms-kubernetes-tools.vscode-kubernetes-tools'
-    'ms-toolsai.jupyter'
-    'ms-toolsai.jupyter-keymap'
-    'ms-toolsai.jupyter-renderers'
-    'ms-vscode-remote.remote-containers'
-    'ms-vscode-remote.remote-ssh'
-    'ms-vscode-remote.remote-ssh-edit'
-    'ms-vscode-remote.remote-wsl'
-    'ms-vscode-remote.vscode-remote-extensionpack'
-    'ms-vscode.azure-account'
-    'ms-vscode.azurecli'
+
+    # powershell + code coverage
     'ms-vscode.powershell'
-    'ms-vscode.remote-repositories'
-    'ms-vscode.vscode-node-azure-pack'
-    'msazurermtools.azurerm-vscode-tools'
-    'oderwat.indent-rainbow'
-    'redhat.vscode-xml'
-    'redhat.vscode-yaml'
     'ryanluker.vscode-coverage-gutters'
-    'tfsec.tfsec'
+
+    # terraform
+    'hashicorp.terraform'
 )
 
 

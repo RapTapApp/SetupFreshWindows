@@ -95,6 +95,12 @@
   "editor.semanticHighlighting.enabled": true,
   "editor.smoothScrolling": true,
   /*
+    ---[ IDE: Editor: Bracket pair coloring & guides ]---
+  */
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.highlightActiveIndentation": true,
+  "editor.guides.bracketPairsHorizontal": "active",
+  /*
     ---[ IDE: Editor: Indentation ]---
   */
   "editor.autoIndent": "full",
@@ -155,11 +161,11 @@
 
     ---[ IDE: Workbench ]---
   */
+  "workbench.colorTheme": "Default Dark+ Experimental",
   "workbench.commandPalette.preserveInput": true,
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
   "workbench.tree.renderIndentGuides": "always",
-  "workbench.colorTheme": "RapTapApp: Darker Nord (PS & TF)",
   /*
     ---[ IDE: Workbench: Editor associations ]---
   */
@@ -191,7 +197,7 @@
     ---[ Ext: Azure-Pipelines ]---
   */
   "azure-pipelines.configure": true,
-  "azure-pipelines.customSchemaFile": "${env:APPDATA}/Code/User/settings.ext/azure-pipelines/yaml-schema.json",
+  "azure-pipelines.customSchemaFile": "~/.vscode/settings.ext/azure-pipelines/yaml-schema.json",
   /*
 
 
@@ -305,7 +311,7 @@
     ---[ Ext: PowerShell: Script-analysis ]---
   */
   "powershell.scriptAnalysis.enable": true,
-  "powershell.scriptAnalysis.settingsPath": "${env:APPDATA}/Code/User/settings.ext/powershell/script-analysis.psd1",
+  "powershell.scriptAnalysis.settingsPath": "~/.vscode/settings.ext/powershell/script-analysis.psd1",
   /*
 
 

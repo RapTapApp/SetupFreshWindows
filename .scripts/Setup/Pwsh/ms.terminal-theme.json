@@ -1,0 +1,27 @@
+{
+  "name": "RapTapApp",
+  "background": "#2e3440",
+  "foreground": "#d8dee9",
+  "selectionBackground": "#eceff4",
+  "cursorColor": "#eceff4",
+  // Bright colors
+  "brightRed": "#ff9298",
+  "brightOrange": "#ffb394",
+  "brightYellow": "#ffeda1",
+  "brightGreen": "#e5ffc3",
+  "brightPurple": "#fad0f6",
+  "brightBlue": "#92bbf5",
+  "brightCyan": "#b7ebff",
+  "brightBlack": "#434c5e",
+  "brightWhite": "#eceff4",
+  // Dark colors
+  "red": "#b3676b",
+  "orange": "#c68b73",
+  "yellow": "#e6cb92",
+  "green": "#a9bc90",
+  "purple": "#ae91ab",
+  "blue": "#6581a9",
+  "cyan": "#94bece",
+  "black": "#2e3440",
+  "white": "#d8dee9"
+}

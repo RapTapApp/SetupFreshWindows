@@ -1,0 +1,17 @@
+{
+    "ExperimentalFeatures": [
+        "PSCommandNotFoundSuggestion",
+        "PSDesiredStateConfiguration.InvokeDscResource",
+        "PSNativePSPathResolution",
+        "PSSubsystemPluginModel",
+        "PSNativeCommandArgumentPassing",
+        "PSAnsiRenderingFileInfo",
+        "PSLoadAssemblyFromNativeCode",
+        "PSCleanBlock",
+        "PSExec",
+        "PSNativeCommandErrorActionPreference",
+        "PSStrictModeAssignment",
+        "PSAMSIMethodInvocationLogging"
+    ],
+    "Microsoft.PowerShell:ExecutionPolicy": "RemoteSigned"
+}

@@ -75,6 +75,14 @@
   /*
 
 
+    ---[ IDE: Accessibility ]---
+  */
+  "accessibility.signals.terminalBell": {
+    "sound": "on"
+  },
+  /*
+
+
     ---[ IDE: Debug ]---
   */
   "debug.console.wordWrap": false,
@@ -161,7 +169,7 @@
 
     ---[ IDE: Workbench ]---
   */
-  "workbench.colorTheme": "Default Dark+ Experimental",
+  "workbench.colorTheme": "Nord - Zam",
   "workbench.commandPalette.preserveInput": true,
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
@@ -188,6 +196,7 @@
   "terminal.integrated.allowMnemonics": true,
   "terminal.integrated.drawBoldTextInBrightColors": true,
   "terminal.integrated.enableBell": true,
+  "terminal.integrated.enableVisualBell": true,
   "terminal.integrated.enableFileLinks": "on",
   "terminal.integrated.enablePersistentSessions": true,
   "terminal.integrated.scrollback": 1000,

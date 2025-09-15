@@ -1,6 +1,5 @@
 # Import default PS:Modules
 Import-Module -Name 'PSReadLine'
-Import-Module -Name 'posh-git'
 Import-Module -Name 'Terminal-Icons'
 
 
@@ -14,13 +13,13 @@ $PSStyle.Formatting.Debug = $PSStyle.Foreground.Blue
 
 
 
-# Init PS:Settings
-$global:PSNativeCommandArgumentPassing = 'Standard'
-
+# Setup PSReadLine
 Set-PSReadLineOption -PredictionSource 'History'
 Set-PSReadLineOption -PredictionViewStyle 'ListView'
 
-$env:POSH_GIT_ENABLED = $true
+
+
+# Setup oh-my-posh
 oh-my-posh init pwsh --config "$PSScriptRoot\nordtron.omp.json" | Invoke-Expression
 
 
@@ -132,7 +131,7 @@ function Invoke-MsBuild {
 
 
 
-        $RelDir = "$(Resolve-Path $(Split-Path $Path -Parent) -Relative)".Substring(2)
+        # $RelDir = "$(Resolve-Path $(Split-Path $Path -Parent) -Relative)".Substring(2)
 
         $OutName = 'D{0:yyyy-MM-dd}-T{0:HH.mm.ss}-{1}' -f $(Get-Date), $PathName
         $OutDir = Join-Path $OutDir -ChildPath $Configuration -AdditionalChildPath $OutName

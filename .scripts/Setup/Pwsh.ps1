@@ -19,14 +19,22 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy 'Trusted'
 # Setup PS:Modules
 Write-Information "`nSetup: PS:Modules..."
 
-$PSModules = @{
-    'Az'               = @{}
-    'ImportExcel'      = @{}
-    'Pester'           = @{ Force = $true; SkipPublisherCheck = $true }
-    'posh-git'         = @{}
-    'PSReadLine'       = @{ Force = $true }
-    'PSScriptAnalyzer' = @{ Force = $true }
+$PSModules = [ordered] @{
+    # By Microsoft
+    'Az'               = @{ AllowClobber = $true; Force = $false }
+    'PSReadLine'       = @{}
+    'PSScriptAnalyzer' = @{}
+
+    # For oh-my-posh
     'Terminal-Icons'   = @{}
+
+    # For Excel I/O
+    'ImportExcel'      = @{}
+
+    # For PS development
+    'Assert'           = @{}
+    'Pester'           = @{ SkipPublisherCheck = $true }
+    'Profiler'         = @{}
 }
 
 
@@ -37,30 +45,25 @@ Write-Information "`nInstalling PS:Modules..."
 $PSModules.GetEnumerator() | ForEach-Object {
 
     # Install PS:Module
-    Write-Information " - $($PSItem.Name)"
+    Write-Information "`n - $($PSItem.Name)"
 
-    if (-not $(Get-InstalledModule -Name $PSItem.Name -ErrorAction Ignore)) {
-
-        $ModOpt = @{
-            Name               = $PSItem.Name
-            Scope              = 'AllUsers'
-            Force              = [bool] $PSItem.Value.Force
-            SkipPublisherCheck = [bool] $PSItem.Value.SkipPublisherCheck
-        }
-
-        Install-Module @ModOpt
-
-    } else {
-
-        $ModOpt = @{
-            Name  = $PSItem.Name
-            Scope = 'AllUsers'
-            Force = [bool] $PSItem.Value.Force
-        }
-
-        Update-Module @ModOpt
+    $InstallArgs = @{
+        Force              = [bool] ($PSItem.Value.Force ?? $true)
+        AllowClobber       = [bool] ($PSItem.Value.AllowClobber ?? $false)
+        SkipPublisherCheck = [bool] ($PSItem.Value.SkipPublisherCheck ?? $false)
     }
+
+    Install-Module $PSItem.Name -Scope 'AllUsers' @InstallArgs
 }
+
+Write-Information ''
+
+
+
+# Update Help of PS:Modules
+Write-Information "`nUpdating Help of PS:Modules..."
+
+Update-Help -Force -Scope AllUsers -UICulture en-US -ErrorAction Continue
 
 Write-Information ''
 

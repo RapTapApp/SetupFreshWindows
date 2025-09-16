@@ -1,7 +1,11 @@
 ﻿#Requires -Version 7.3
 #Requires -RunAsAdministrator
 
-param()
+param(
+    [string] $GitUserName,
+    [string] $GitEmail,
+    [string] $GitGpgKeyId
+)
 
 
 
@@ -14,7 +18,7 @@ Set-Location $PSScriptRoot
 Write-Information "`nSetup..."
 
 . .\Setup\Az-cli.ps1
-. .\Setup\Git.ps1
+. .\Setup\Git.ps1 @PSBoundParameters
 . .\Setup\Pwsh.ps1
 . .\Setup\Terminal.ps1
 . .\Setup\VsCode.ps1

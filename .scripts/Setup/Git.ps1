@@ -2,7 +2,9 @@
 #Requires -RunAsAdministrator
 
 param(
-    [string] $Email = 'cees@raptapapp.com'
+    [string] $GitUserName = 'Cees van Berkel',
+    [string] $GitEmail = 'Cees@RapTapApp.com',
+    [string] $GitGpgKeyId
 )
 
 
@@ -17,10 +19,25 @@ Write-Information 'Setup: git...'
 git config --system init.defaultbranch 'main'
 git config --system core.longpaths true
 
-git config --global user.name 'Cees van Berkel'
-git config --global user.email $Email
+if ($GitUserName) {
+    git config --global user.name $GitUserName
+}
 
+if ($GitEmail) {
+    git config --global user.email $GitEmail
+}
 
+# See: https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits
+if ($GitGpgKeyId) {
+
+    git config --global user.signingkey $GitGpgKeyId
+
+    git config --global --unset gpg.format
+    git config --global gpg.program 'C:\Program Files (x86)\GnuPG\bin\gpg.exe'
+
+    git config --global commit.gpgsign true
+    git config --global tag.gpgSign true
+}
 
 # Done!
 Write-Information "`n[DONE]"
